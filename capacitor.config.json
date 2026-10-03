@@ -1,0 +1,14 @@
+{
+  "appId": "cn.neepwords.kaoyanvocab",
+  "appName": "NeepWords",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": false,
+    "captureInput": true,
+    "webContentsDebuggingEnabled": false
+  }
+}

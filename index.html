@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>NeepWords · 考研英语大纲词库</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<meta name="theme-color" content="#0f766e">
+<meta name="description" content="考研英语大纲词库手机版：查词是否在大纲、五种模式检索、生词本与听写自测、A4 背诵表导出。数据来自 NeepWords 本地词库。">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="NeepWords">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<div class="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">N</span>
+      <span class="brand-text">
+        <strong>NeepWords</strong>
+        <small id="brandSub">考研英语大纲词库</small>
+      </span>
+    </div>
+    <button class="icon-btn" id="themeBtn" type="button" aria-label="切换主题" title="切换主题">◐</button>
+  </header>
+
+  <main id="main">
+
+    <!-- ================= 查词 ================= -->
+    <section class="view is-active" id="view-lookup" data-view="lookup">
+      <div class="card hero">
+        <div class="hero-row">
+          <div>
+            <p class="hero-label">当前词库</p>
+            <p class="hero-value" id="dbLabel">加载中…</p>
+          </div>
+          <span class="chip chip-brand" id="dbChip">— 词</span>
+        </div>
+        <p class="hero-note" id="dbNote"></p>
+      </div>
+
+      <div class="card">
+        <label class="field-label" for="lookupInput">查一个词是否在大纲内</label>
+        <div class="input-row">
+          <input id="lookupInput" class="input" type="text" inputmode="latin" autocomplete="off"
+                 autocorrect="off" autocapitalize="off" spellcheck="false"
+                 placeholder="例如 transition、abandon">
+          <button class="btn btn-primary" id="lookupBtn" type="button">查询</button>
+        </div>
+        <p class="hint">支持一次粘贴多个词（空格、逗号或换行分隔），最多 200 个。</p>
+        <div id="suggestBox" class="suggest" hidden></div>
+        <div id="lookupResults" class="results"></div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">常见用法</h2>
+        <div class="quick-grid">
+          <button class="quick" data-lookup="transition" type="button">transition</button>
+          <button class="quick" data-lookup="abandon" type="button">abandon</button>
+          <button class="quick" data-lookup="inevitable" type="button">inevitable</button>
+          <button class="quick" data-lookup="awesome" type="button">awesome</button>
+        </div>
+        <p class="hint">最后一个词不在大纲内，可以用来对比「命中 / 未命中」的表现。</p>
+      </div>
+    </section>
+
+    <!-- ================= 检索 ================= -->
+    <section class="view" id="view-search" data-view="search">
+      <div class="card">
+        <label class="field-label" for="searchInput">检索词库</label>
+        <div class="input-row">
+          <input id="searchInput" class="input" type="text" inputmode="latin" autocomplete="off"
+                 autocorrect="off" autocapitalize="off" spellcheck="false"
+                 placeholder="输入关键词，如 trans">
+          <button class="btn btn-primary" id="searchBtn" type="button">检索</button>
+        </div>
+        <div class="seg" id="modeSeg" role="tablist">
+          <button class="seg-item is-on" data-mode="prefix" type="button">前缀</button>
+          <button class="seg-item" data-mode="suffix" type="button">后缀</button>
+          <button class="seg-item" data-mode="contains" type="button">包含</button>
+          <button class="seg-item" data-mode="fuzzy" type="button">模糊</button>
+          <button class="seg-item" data-mode="wildcard" type="button">通配</button>
+        </div>
+        <p class="hint" id="modeHint"></p>
+        <div class="opt-row">
+          <label class="opt">每页
+            <select id="searchLimit" class="select">
+              <option>20</option><option selected>50</option><option>100</option><option>200</option>
+            </select>
+          </label>
+          <button class="btn btn-ghost" id="searchAll" type="button">加入生词本</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="list-head">
+          <h2 class="card-title" id="searchTitle">检索结果</h2>
+          <span class="chip" id="searchCount">0 条</span>
+        </div>
+        <div id="searchResults" class="results"></div>
+        <div class="pager" id="searchPager" hidden>
+          <button class="btn btn-ghost" id="prevPage" type="button">上一页</button>
+          <span id="pageInfo" class="pager-info">1 / 1</span>
+          <button class="btn btn-ghost" id="nextPage" type="button">下一页</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 背词 ================= -->
+    <section class="view" id="view-study" data-view="study">
+      <div class="stat-grid">
+        <div class="stat"><span class="stat-num" id="statTotal">0</span><span class="stat-lbl">生词本</span></div>
+        <div class="stat"><span class="stat-num stat-due" id="statDue">0</span><span class="stat-lbl">今日待复习</span></div>
+        <div class="stat"><span class="stat-num" id="statMastered">0</span><span class="stat-lbl">已掌握</span></div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">听写自测</h2>
+        <p class="hint">播放读音 → 手动拼写 → 自动判定。答对升一级复习阶段，答错回到当天重来。</p>
+        <div class="opt-row">
+          <label class="opt">每轮题量
+            <select id="quizSize" class="select">
+              <option>10</option><option selected>20</option><option>30</option><option>50</option>
+            </select>
+          </label>
+          <label class="opt">题目来源
+            <select id="quizSource" class="select">
+              <option value="due" selected>待复习（含新词）</option>
+              <option value="book">全部生词本</option>
+              <option value="all">全部大纲词</option>
+              <option value="wrong">只练错过的词</option>
+            </select>
+          </label>
+        </div>
+        <button class="btn btn-primary btn-block" id="startQuiz" type="button">开始一轮听写</button>
+      </div>
+
+      <div class="card">
+        <div class="list-head">
+          <h2 class="card-title">生词本</h2>
+          <span class="chip" id="bookCount">0 词</span>
+        </div>
+        <div class="opt-row">
+          <label class="opt">排序
+            <select id="bookSort" class="select">
+              <option value="due" selected>按复习时间</option>
+              <option value="added">按加入时间</option>
+              <option value="word">按字母</option>
+              <option value="wrong">按错误次数</option>
+            </select>
+          </label>
+          <button class="btn btn-ghost" id="clearBook" type="button">清空</button>
+        </div>
+        <div id="bookList" class="results"></div>
+      </div>
+    </section>
+
+    <!-- ================= 词表 ================= -->
+    <section class="view" id="view-list" data-view="list">
+      <div class="card">
+        <div class="list-head">
+          <h2 class="card-title">浏览全部大纲词</h2>
+          <span class="chip" id="listCount">0 词</span>
+        </div>
+        <div class="seg seg-sm" id="browseSeg">
+          <button class="seg-item is-on" data-browse="letter" type="button">按字母</button>
+          <button class="seg-item" data-browse="page" type="button">按页码</button>
+        </div>
+        <div id="letterNav" class="index-nav"></div>
+        <div id="pageNav" class="index-nav" hidden></div>
+        <input id="filterInput" class="input" type="text" inputmode="latin" autocomplete="off"
+               placeholder="在当前分组内过滤…">
+        <div class="list-head list-head-sub">
+          <label class="check-all"><input type="checkbox" id="selectAllGroup"> 全选本组</label>
+          <span class="chip chip-brand" id="pickedChip">已选 0</span>
+        </div>
+        <div id="browseList" class="results results-tight"></div>
+        <div class="sticky-actions">
+          <button class="btn btn-ghost" id="pickedToBook" type="button">加入生词本</button>
+          <button class="btn btn-primary" id="pickedToSheet" type="button">生成背诵表</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 我的 ================= -->
+    <section class="view" id="view-mine" data-view="mine">
+      <div class="card">
+        <h2 class="card-title">词库信息</h2>
+        <dl class="kv" id="metaList"></dl>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">字母分布</h2>
+        <div class="bars" id="letterBars"></div>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">OCR 质量提示 <span class="chip chip-warn" id="noiseChip">0</span></h2>
+        <p class="hint">
+          下面这些条目来自扫描版大纲的 OCR 识别，疑似分栏误切或断字，已标记但不影响查词。
+          请以官方大纲原文为准。
+        </p>
+        <div id="noiseList" class="results results-tight"></div>
+        <button class="btn btn-ghost btn-block" id="copyNoise" type="button">复制可疑词清单</button>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">数据与备份</h2>
+        <p class="hint">
+          生词本与学习记录只保存在这台设备（浏览器本地存储），不上传任何服务器。
+        </p>
+        <button class="btn btn-ghost btn-block" id="exportBtn" type="button">导出学习数据（JSON）</button>
+        <button class="btn btn-ghost btn-block" id="importBtn" type="button">导入学习数据</button>
+        <button class="btn btn-ghost btn-block" id="copyWordsBtn" type="button">复制生词本单词列表</button>
+        <input type="file" id="importFile" accept="application/json,.json" hidden>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">关于</h2>
+        <p class="about">
+          本应用是开源项目
+          <a href="https://github.com/elanzuo/NeepWords" target="_blank" rel="noreferrer noopener">elanzuo/NeepWords</a>
+          的移动端版本。原项目是一套本地考研英语词库工具集（词库检索 / 背诵表生成 / OCR 提取入库），
+          运行方式是 macOS + Python 命令行；本应用把其中的<b>词库检索</b>、<b>大纲归属判断</b>与
+          <b>A4 背诵表生成</b>搬到了手机上，无需安装 Python，打开网页即可用，并可离线使用。
+        </p>
+        <p class="about">
+          词库数据取自该项目仓库内置的只读示例数据库 <code>words.sqlite3</code>，为
+          2026 考研英语（一）考试大纲词汇，共 <b>5624</b> 词。软件代码遵循 MIT 许可；
+          词表数据的版权归考试大纲发布方所有，本应用仅供个人学习检索使用，请勿二次分发。
+        </p>
+        <p class="about muted">应用版本 <span id="appVer">1.0.0</span> · 数据提取时间 <span id="genAt">—</span></p>
+      </div>
+
+      <div class="card card-danger">
+        <h2 class="card-title">重置</h2>
+        <p class="hint">清空生词本、复习进度与全部设置，回到初始状态。</p>
+        <button class="btn btn-danger btn-block" id="resetBtn" type="button">清空全部本地数据</button>
+      </div>
+    </section>
+
+  </main>
+
+  <nav class="tabbar" id="tabbar">
+    <button class="tab is-on" data-goto="lookup" type="button"><i>🔍</i><span>查词</span></button>
+    <button class="tab" data-goto="search" type="button"><i>≡</i><span>检索</span></button>
+    <button class="tab" data-goto="study" type="button"><i>✎</i><span>背词</span></button>
+    <button class="tab" data-goto="list" type="button"><i>☰</i><span>词表</span></button>
+    <button class="tab" data-goto="mine" type="button"><i>☺</i><span>我的</span></button>
+  </nav>
+</div>
+
+<!-- 单词详情 / 听写 面板 -->
+<div class="sheet-backdrop" id="backdrop" hidden></div>
+<section class="sheet" id="sheet" hidden aria-modal="true" role="dialog">
+  <div class="sheet-grip"></div>
+  <div class="sheet-body" id="sheetBody"></div>
+</section>
+
+<!-- 听写全屏面板 -->
+<section class="quiz" id="quiz" hidden aria-modal="true" role="dialog">
+  <header class="quiz-top">
+    <button class="icon-btn" id="quizClose" type="button" aria-label="退出">✕</button>
+    <span id="quizProgress">1 / 20</span>
+    <span class="quiz-score" id="quizScore">✓ 0 ✗ 0</span>
+  </header>
+  <div class="quiz-main" id="quizMain"></div>
+</section>
+
+<!-- 打印区（背诵表） -->
+<div id="printArea" class="print-area"></div>
+
+<div class="toast" id="toast" hidden></div>
+
+<script src="data/vocab.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,605 @@
+{
+  "meta": {
+    "appName": "NeepWords 考研词库",
+    "appVersion": "1.0.0",
+    "version": "2026",
+    "label": "2026考研大纲",
+    "sourcePdf": "/Users/map/Library/Mobile Documents/com~apple~CloudDocs/Documents/考研大纲/26考研英语一考试大纲.pdf",
+    "importedAt": "2026-06-08T16:15:44.655Z",
+    "totalWords": 5624,
+    "pageMin": 45,
+    "pageMax": 165,
+    "pageCount": 121,
+    "sourcePrefix": "26考研英语一考试大纲",
+    "allVersions": [
+      {
+        "version": "2026",
+        "label": "2026考研大纲",
+        "isDefault": true
+      }
+    ],
+    "generatedFrom": "NeepWords/skills/kaoyan-vocab-lookup/examples/words.sqlite3"
+  },
+  "noiseCount": 12,
+  "noiseWords": [
+    {
+      "word": "favo rite",
+      "reason": "疑似断字：一个词被空格拆开",
+      "source": "26考研英语一考试大纲-86-L-8-favo(u) rite"
+    },
+    {
+      "word": "flavo r",
+      "reason": "疑似分栏误切：被拆成单字母片段",
+      "source": "26考研英语一考试大纲-87-R-12-flavo (u)r"
+    },
+    {
+      "word": "flavo ur",
+      "reason": "疑似断字：一个词被空格拆开",
+      "source": "26考研英语一考试大纲-87-R-12-flavo (u)r"
+    },
+    {
+      "word": "instal ment",
+      "reason": "疑似断字：一个词被空格拆开",
+      "source": "26考研英语一考试大纲-101-L-4-instal( )ment"
+    },
+    {
+      "word": "maths)",
+      "reason": "括号残留：OCR 未清理的排版符号",
+      "source": "26考研英语一考试大纲-110-L-7-mathematics / maths)"
+    },
+    {
+      "word": "o clock",
+      "reason": "疑似分栏误切：被拆成单字母片段",
+      "source": "26考研英语一考试大纲-117-L-19-o clock"
+    },
+    {
+      "word": "p rate",
+      "reason": "疑似分栏误切：被拆成单字母片段",
+      "source": "26考研英语一考试大纲-123-R-22-p rate"
+    },
+    {
+      "word": "r sum",
+      "reason": "疑似分栏误切：被拆成单字母片段",
+      "source": "26考研英语一考试大纲-135-L-13-resume / r sum"
+    },
+    {
+      "word": "sk ll",
+      "reason": "疑似断字：一个词被空格拆开",
+      "source": "26考研英语一考试大纲-142-R-9-SK ll"
+    },
+    {
+      "word": "skil ful",
+      "reason": "疑似断字：一个词被空格拆开",
+      "source": "26考研英语一考试大纲-142-R-11-skil(l) ful"
+    },
+    {
+      "word": "skill ful",
+      "reason": "疑似断字：一个词被空格拆开",
+      "source": "26考研英语一考试大纲-142-R-11-skil(l) ful"
+    },
+    {
+      "word": "slight b",
+      "reason": "疑似分栏误切：被拆成单字母片段",
+      "source": "26考研英语一考试大纲-143-L-6-slight b"
+    }
+  ],
+  "letterCounts": {
+    "a": 386,
+    "b": 278,
+    "c": 569,
+    "d": 341,
+    "e": 290,
+    "f": 261,
+    "g": 154,
+    "h": 195,
+    "i": 237,
+    "j": 41,
+    "k": 33,
+    "l": 189,
+    "m": 262,
+    "n": 118,
+    "o": 156,
+    "p": 456,
+    "q": 27,
+    "r": 314,
+    "s": 663,
+    "t": 304,
+    "u": 67,
+    "v": 99,
+    "w": 158,
+    "x": 1,
+    "y": 18,
+    "z": 7
+  },
+  "pages": [
+    {
+      "page": 45,
+      "count": 38
+    },
+    {
+      "page": 46,
+      "count": 47
+    },
+    {
+      "page": 47,
+      "count": 49
+    },
+    {
+      "page": 48,
+      "count": 47
+    },
+    {
+      "page": 49,
+      "count": 51
+    },
+    {
+      "page": 50,
+      "count": 48
+    },
+    {
+      "page": 51,
+      "count": 46
+    },
+    {
+      "page": 52,
+      "count": 48
+    },
+    {
+      "page": 53,
+      "count": 47
+    },
+    {
+      "page": 54,
+      "count": 46
+    },
+    {
+      "page": 55,
+      "count": 48
+    },
+    {
+      "page": 56,
+      "count": 46
+    },
+    {
+      "page": 57,
+      "count": 46
+    },
+    {
+      "page": 58,
+      "count": 46
+    },
+    {
+      "page": 59,
+      "count": 47
+    },
+    {
+      "page": 60,
+      "count": 47
+    },
+    {
+      "page": 61,
+      "count": 49
+    },
+    {
+      "page": 62,
+      "count": 47
+    },
+    {
+      "page": 63,
+      "count": 46
+    },
+    {
+      "page": 64,
+      "count": 47
+    },
+    {
+      "page": 65,
+      "count": 46
+    },
+    {
+      "page": 66,
+      "count": 46
+    },
+    {
+      "page": 67,
+      "count": 46
+    },
+    {
+      "page": 68,
+      "count": 46
+    },
+    {
+      "page": 69,
+      "count": 46
+    },
+    {
+      "page": 70,
+      "count": 46
+    },
+    {
+      "page": 71,
+      "count": 46
+    },
+    {
+      "page": 72,
+      "count": 46
+    },
+    {
+      "page": 73,
+      "count": 46
+    },
+    {
+      "page": 74,
+      "count": 48
+    },
+    {
+      "page": 75,
+      "count": 47
+    },
+    {
+      "page": 76,
+      "count": 46
+    },
+    {
+      "page": 77,
+      "count": 47
+    },
+    {
+      "page": 78,
+      "count": 46
+    },
+    {
+      "page": 79,
+      "count": 46
+    },
+    {
+      "page": 80,
+      "count": 48
+    },
+    {
+      "page": 81,
+      "count": 49
+    },
+    {
+      "page": 82,
+      "count": 46
+    },
+    {
+      "page": 83,
+      "count": 47
+    },
+    {
+      "page": 84,
+      "count": 46
+    },
+    {
+      "page": 85,
+      "count": 45
+    },
+    {
+      "page": 86,
+      "count": 48
+    },
+    {
+      "page": 87,
+      "count": 47
+    },
+    {
+      "page": 88,
+      "count": 46
+    },
+    {
+      "page": 89,
+      "count": 46
+    },
+    {
+      "page": 90,
+      "count": 47
+    },
+    {
+      "page": 91,
+      "count": 47
+    },
+    {
+      "page": 92,
+      "count": 47
+    },
+    {
+      "page": 93,
+      "count": 48
+    },
+    {
+      "page": 94,
+      "count": 48
+    },
+    {
+      "page": 95,
+      "count": 48
+    },
+    {
+      "page": 96,
+      "count": 48
+    },
+    {
+      "page": 97,
+      "count": 48
+    },
+    {
+      "page": 98,
+      "count": 46
+    },
+    {
+      "page": 99,
+      "count": 46
+    },
+    {
+      "page": 100,
+      "count": 47
+    },
+    {
+      "page": 101,
+      "count": 47
+    },
+    {
+      "page": 102,
+      "count": 45
+    },
+    {
+      "page": 103,
+      "count": 47
+    },
+    {
+      "page": 104,
+      "count": 51
+    },
+    {
+      "page": 105,
+      "count": 46
+    },
+    {
+      "page": 106,
+      "count": 46
+    },
+    {
+      "page": 107,
+      "count": 45
+    },
+    {
+      "page": 108,
+      "count": 46
+    },
+    {
+      "page": 109,
+      "count": 47
+    },
+    {
+      "page": 110,
+      "count": 47
+    },
+    {
+      "page": 111,
+      "count": 47
+    },
+    {
+      "page": 112,
+      "count": 46
+    },
+    {
+      "page": 113,
+      "count": 45
+    },
+    {
+      "page": 114,
+      "count": 46
+    },
+    {
+      "page": 115,
+      "count": 48
+    },
+    {
+      "page": 116,
+      "count": 46
+    },
+    {
+      "page": 117,
+      "count": 48
+    },
+    {
+      "page": 118,
+      "count": 46
+    },
+    {
+      "page": 119,
+      "count": 46
+    },
+    {
+      "page": 120,
+      "count": 46
+    },
+    {
+      "page": 121,
+      "count": 46
+    },
+    {
+      "page": 122,
+      "count": 47
+    },
+    {
+      "page": 123,
+      "count": 49
+    },
+    {
+      "page": 124,
+      "count": 47
+    },
+    {
+      "page": 125,
+      "count": 48
+    },
+    {
+      "page": 126,
+      "count": 46
+    },
+    {
+      "page": 127,
+      "count": 46
+    },
+    {
+      "page": 128,
+      "count": 47
+    },
+    {
+      "page": 129,
+      "count": 46
+    },
+    {
+      "page": 130,
+      "count": 47
+    },
+    {
+      "page": 131,
+      "count": 46
+    },
+    {
+      "page": 132,
+      "count": 47
+    },
+    {
+      "page": 133,
+      "count": 46
+    },
+    {
+      "page": 134,
+      "count": 46
+    },
+    {
+      "page": 135,
+      "count": 46
+    },
+    {
+      "page": 136,
+      "count": 46
+    },
+    {
+      "page": 137,
+      "count": 49
+    },
+    {
+      "page": 138,
+      "count": 47
+    },
+    {
+      "page": 139,
+      "count": 46
+    },
+    {
+      "page": 140,
+      "count": 46
+    },
+    {
+      "page": 141,
+      "count": 46
+    },
+    {
+      "page": 142,
+      "count": 47
+    },
+    {
+      "page": 143,
+      "count": 46
+    },
+    {
+      "page": 144,
+      "count": 46
+    },
+    {
+      "page": 145,
+      "count": 46
+    },
+    {
+      "page": 146,
+      "count": 49
+    },
+    {
+      "page": 147,
+      "count": 48
+    },
+    {
+      "page": 148,
+      "count": 45
+    },
+    {
+      "page": 149,
+      "count": 47
+    },
+    {
+      "page": 150,
+      "count": 46
+    },
+    {
+      "page": 151,
+      "count": 44
+    },
+    {
+      "page": 152,
+      "count": 49
+    },
+    {
+      "page": 153,
+      "count": 46
+    },
+    {
+      "page": 154,
+      "count": 46
+    },
+    {
+      "page": 155,
+      "count": 47
+    },
+    {
+      "page": 156,
+      "count": 46
+    },
+    {
+      "page": 157,
+      "count": 46
+    },
+    {
+      "page": 158,
+      "count": 46
+    },
+    {
+      "page": 159,
+      "count": 47
+    },
+    {
+      "page": 160,
+      "count": 46
+    },
+    {
+      "page": 161,
+      "count": 48
+    },
+    {
+      "page": 162,
+      "count": 46
+    },
+    {
+      "page": 163,
+      "count": 48
+    },
+    {
+      "page": 164,
+      "count": 46
+    },
+    {
+      "page": 165,
+      "count": 24
+    }
+  ],
+  "malformedSources": [],
+  "prefixes": {
+    "26考研英语一考试大纲": 5624
+  },
+  "bytes": 140603
+}
